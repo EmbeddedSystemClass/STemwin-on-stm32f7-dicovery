@@ -1,0 +1,14 @@
+touch.c:59:9:I2C_ReadDeviceRegister	32	static
+touch.c:67:9:I2C_WriteDeviceRegister	32	static
+touch.c:76:10:I2C_ReadDataBuffer	48	static
+touch.c:89:10:Touch_ReadID	8	static
+touch.c:101:9:Touch_ReadVersion	0	static
+touch.c:29:6:Touch_I2C_Test	8	static
+touch.c:108:6:Touch_Reset	8	static
+touch.c:116:6:Touch_FnctCmd	16	static
+touch.c:138:6:Touch_GITCmd	8	static
+touch.c:160:6:Touch_GITConfig	16	static
+touch.c:229:6:Touch_IOAFConfig	16	static
+touch.c:181:6:Touch_TP_Config	8	static
+touch.c:47:9:Touch_Config	8	static
+touch.c:327:11:IOE_TP_GetState	24	static

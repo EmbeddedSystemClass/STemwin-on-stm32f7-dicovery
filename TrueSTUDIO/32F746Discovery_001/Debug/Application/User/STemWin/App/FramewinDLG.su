@@ -1,0 +1,3 @@
+FramewinDLG.c:102:13:_cbDialog	24	static
+FramewinDLG.c:89:6:InitDialog	0	static
+FramewinDLG.c:282:9:CreateFramewin	16	static

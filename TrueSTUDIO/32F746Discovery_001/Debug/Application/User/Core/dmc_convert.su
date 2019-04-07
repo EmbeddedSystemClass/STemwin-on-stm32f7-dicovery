@@ -1,0 +1,10 @@
+dmc_convert.c:12:8:dmc_itoa	32	static
+dmc_convert.c:46:8:dmc_itoa_len_0	24	static
+dmc_convert.c:63:8:dmc_itoa_len_space	24	static
+dmc_convert.c:81:6:reverse	8	static
+dmc_convert.c:97:5:intToStr	16	static
+dmc_convert.c:117:8:dmc_ftoa	32	static
+dmc_convert.c:143:8:dmc_utox	12	static
+dmc_convert.c:175:9:dmc_Dec2Ascii	32	static
+dmc_convert.c:226:6:dmc_floatDot3Toa	24	static
+dmc_convert.c:297:6:dmc_swap_case_len	8	static

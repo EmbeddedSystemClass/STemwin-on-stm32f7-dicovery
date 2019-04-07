@@ -1,0 +1,7 @@
+J01_2D.c:6:6:J01_DrawAlpha1	16	static
+J01_2D.c:29:6:J01_DrawAlpha2	24	static
+J01_2D.c:52:6:J01_DrawAlpha3	24	static
+J01_2D.c:76:6:Shapes	16	static
+J01_2D.c:151:10:J01_GetPixel	8	static
+J01_2D.c:113:6:J01_PixelIndex	16	static
+J01_2D.c:157:6:J01_SetPixel	8	static

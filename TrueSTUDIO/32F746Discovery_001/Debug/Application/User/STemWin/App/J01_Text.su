@@ -1,0 +1,7 @@
+J01_Text.c:3:6:J01_TextVersionString1	16	static
+J01_Text.c:19:6:J01_TextVersionString2	24	static
+J01_Text.c:41:6:J01_TextModes	8	static
+J01_Text.c:67:6:DispFloat	16	static
+J01_Text.c:101:6:J01_TextInBox	80	static
+J01_Text.c:195:6:J01_GUI_GetClientRect	16	static
+J01_Text.c:145:6:J01_TextRotated	56	static
