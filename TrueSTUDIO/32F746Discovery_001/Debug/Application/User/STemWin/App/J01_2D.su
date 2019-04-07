@@ -5,7 +5,7 @@ J01_2D.c:77:6:J01_Shapes	16	static
 J01_2D.c:114:6:J01_Sine	952	static
 J01_2D.c:144:6:J01_BigDigits	8	static
 J01_2D.c:153:6:J01_PieChart	88	static
-J01_2D.c:174:6:J01_DrawModes	40	static
-J01_2D.c:252:10:J01_GetPixel	8	static
-J01_2D.c:214:6:J01_PixelIndex	16	static
-J01_2D.c:258:6:J01_SetPixel	8	static
+J01_2D.c:175:6:J01_DrawModes	40	static
+J01_2D.c:254:10:J01_GetPixel	8	static
+J01_2D.c:216:6:J01_PixelIndex	16	static
+J01_2D.c:260:6:J01_SetPixel	8	static

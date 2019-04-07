@@ -1,4 +1,4 @@
 GUI_App.c:60:15:PollTouchScreen	72	static
 GUI_App.c:94:6:InitNew	8	static
-GUI_App.c:109:6:loop	8	static
-GUI_App.c:154:6:GRAPHICS_MainTask	48	static
+GUI_App.c:109:6:demos	8	static
+GUI_App.c:152:6:GRAPHICS_MainTask	48	static

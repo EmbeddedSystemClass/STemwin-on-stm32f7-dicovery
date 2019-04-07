@@ -81,34 +81,34 @@ void J01_Shapes(void)
     GUI_Clear();
     GUI_SetColor(GUI_YELLOW);
     GUI_AA_SetFactor(6);
-    GUI_SetPenSize(30);
-//    GUI_DrawPoint(15, 15);                            // OK
+    GUI_SetPenSize(6);
+    GUI_DrawPoint(15, 15);                            // OK
 //    GUI_AA_DrawPoint(15, 15);                            // Does not exist!
-//    GUI_DrawLine(120, 15, 420, 40);                   // OK
-//    GUI_AA_DrawLine(120, 30, 420, 55);                // OK
+    GUI_DrawLine(120, 15, 420, 40);                   // OK
+    GUI_AA_DrawLine(120, 30, 420, 55);                // OK
     GUI_DrawRect(30, 38, 60, 63);                   // BUG PenSize wrong
 
-//    GUI_FillRect(20, 38, 100, 63);
+    GUI_FillRect(20, 38, 100, 63);
 
     GUI_DrawRoundedRect(150, 75, 225, 125, 15);     // BUG PenSize wrong
-//    GUI_AA_DrawRoundedRect(150, 75, 225, 125, 15);    // OK
+    GUI_AA_DrawRoundedRect(150, 75, 225, 125, 15);    // OK
 
-//    GUI_FillRoundedRect(375, 75, 450, 125, 15);
-//    GUI_AA_FillRoundedRect(375, 75, 450, 125, 15);
+    GUI_FillRoundedRect(375, 75, 450, 125, 15);
+    GUI_AA_FillRoundedRect(375, 75, 450, 125, 15);
 
     GUI_DrawCircle(45, 150, 30);                   // BUG PenSize wrong
     GUI_AA_DrawCircle(240, 136, 100);                   // BUG Outside Edges Clipped Off
 
-//    GUI_FillCircle(270, 150, 30);
-//    GUI_AA_FillCircle(270, 150, 30);
+    GUI_FillCircle(270, 150, 30);
+    GUI_AA_FillCircle(270, 150, 30);
 
-//    GUI_DrawEllipse(120, 225, 75, 34);                // OK
+    GUI_DrawEllipse(120, 225, 75, 34);                // OK
 //    GUI_AA_DrawEllipse(120, 225, 75, 34);                // Does not exist!
 
-//    GUI_FillEllipse(360, 225, 75, 34);
-//    GUI_AA_FillEllipse(360, 225, 75, 34);
+    GUI_FillEllipse(360, 225, 75, 34);
+    GUI_AA_FillEllipse(360, 225, 75, 34);
 
-//    GUI_DispStringHCenterAt("Shapes", 195, 225);
+    GUI_DispStringHCenterAt("Shapes", 195, 225);
 }
 
 void J01_Sine(void)
@@ -167,6 +167,7 @@ void J01_PieChart(void)
       GUI_SetColor(aColors[i]);
       GUI_DrawPie(150, 136, 120, a0, a1, 0);
     }
+    GUI_SetFont(&GUI_Font32_1);
     GUI_SetColor(GUI_WHITE);
     GUI_DispStringHCenterAt("Pie", 320, 150);
 }
@@ -209,6 +210,7 @@ void J01_DrawModes(void)
     GUI_EnlargePolygon(aEnlargedPoints, aPoints, GUI_COUNTOF(aPoints), i * 5);
     GUI_FillPolygon(aEnlargedPoints, GUI_COUNTOF(aPoints), 140, 110);
   };
+  GUI_SetDrawMode(GUI_DRAWMODE_NORMAL);
 }
 
 void J01_PixelIndex(void)

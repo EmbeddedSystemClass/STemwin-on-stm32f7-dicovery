@@ -122,8 +122,6 @@ void demos(void)
   HAL_Delay(delay);
   J01_TextRotated();
   HAL_Delay(delay);
-  J01_TextRotated();
-  HAL_Delay(delay);
 
   J01_DrawAlpha1();
   HAL_Delay(delay);
