@@ -27,7 +27,7 @@ void J01_TextVersionString2(void)
   int yPos = LCD_GetYSize() / 2;
   GUI_SetTextMode(GUI_TM_TRANS);
   GUI_SetFont(GUI_FONT_COMIC24B_ASCII);
-  GUI_DispStringHCenterAt("Hello Jack!", xPos, yPos - 30);
+  GUI_DispStringHCenterAt("Hello world!", xPos, yPos - 30);
   GUI_DispStringHCenterAt("STemWin", xPos, yPos + 15);
   GUI_DispString(" ");
   GUI_DispString(GUI_GetVersionString());
@@ -64,7 +64,7 @@ void J01_TextModes(void)
   GUI_DispStringHCenterAt("Text mode GUI_TM_TRANS | GUI_TM_REV", 240, 190);
 }
 
-void DispFloat(void)
+void J01_DispFloat(void)
 {
   //***** "floating point values" *********************************
 

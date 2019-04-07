@@ -1,3 +1,4 @@
+#include <math.h>
 #include "GUI.h"
 #include <stdint.h>
 
@@ -73,7 +74,7 @@ void J01_DrawAlpha3(void)
   GUI_EnableAlpha(0);
 }
 
-void Shapes(void)
+void J01_Shapes(void)
 {
   //  GUI_SelectLayer(1);
     GUI_SetBkColor(GUI_DARKBLUE);
@@ -108,6 +109,106 @@ void Shapes(void)
 //    GUI_AA_FillEllipse(360, 225, 75, 34);
 
 //    GUI_DispStringHCenterAt("Shapes", 195, 225);
+}
+
+void J01_Sine(void)
+{
+  GUI_SetBkColor(GUI_BLACK);
+  GUI_Clear();
+  GUI_SetColor(GUI_WHITE);
+  I16 aY[460];
+  double step = 360.0/460.0;
+  double angle = 0.0;
+  for (int i = 0; i < GUI_COUNTOF(aY); i++) {
+    aY[i] = sin(angle*2*M_PI/180) * -68 + 68;
+    angle += step;
+  }
+  GUI_SetColor(0xff306890);
+  GUI_SetPenSize(2);
+  for (uint16_t y = 4; y < 272; y += 44)
+  {
+    GUI_DrawHLine(y, 10, 470);
+  }
+  for (uint16_t x = 10; x < 480; x += 46)
+  {
+    GUI_DrawVLine(x, 4, 268);
+  }
+  GUI_SetPenSize(6);
+  GUI_SetColor(0xff00ff40);
+  GUI_DrawGraph(aY, GUI_COUNTOF(aY), 10, 69);
+  GUI_DrawGraph(aY, GUI_COUNTOF(aY), 10, 68);
+  GUI_DrawGraph(aY, GUI_COUNTOF(aY), 10, 67);
+  GUI_DrawGraph(aY, GUI_COUNTOF(aY), 10, 66);
+}
+
+void J01_BigDigits(void)
+{
+  GUI_SetBkColor(GUI_DARKBLUE);
+  GUI_Clear();
+  GUI_SetColor(GUI_YELLOW);
+  GUI_SetFont(&GUI_FontD80);
+  GUI_DispStringAt("1234.456", 10, 100);
+}
+
+void J01_PieChart(void)
+{
+  //  GUI_SelectLayer(1);
+    GUI_SetBkColor(GUI_GRAY);
+    GUI_Clear();
+    GUI_SetPenSize(1);
+
+    int a0, a1;
+    const unsigned aValues[]  = { 100, 135, 190, 240, 340, 360};
+    const GUI_COLOR aColors[] = { GUI_BLUE, GUI_GREEN,   GUI_RED,
+        GUI_CYAN, GUI_MAGENTA, GUI_YELLOW };
+    for (int i = 0; i < GUI_COUNTOF(aValues); i++) {
+      a0 = (i == 0) ? 0 : aValues[i - 1];
+      a1 = aValues[i];
+      GUI_SetColor(aColors[i]);
+      GUI_DrawPie(150, 136, 120, a0, a1, 0);
+    }
+    GUI_SetColor(GUI_WHITE);
+    GUI_DispStringHCenterAt("Pie", 320, 150);
+}
+
+void J01_DrawModes(void)
+{
+  const GUI_POINT aPoints[] = {
+    { 40, 20},
+    {  0, 20},
+    { 20,  0}
+  };
+
+  GUI_SetBkColor(GUI_GREEN);
+  GUI_Clear();
+  GUI_SetColor(GUI_RED);
+  for (int i = 10; i <= 470; i += 10) {
+    GUI_DrawLine(i, 30, i, 60);
+//    HAL_Delay(20);
+  };
+  for (int i = 10; i < 50; i += 3) {
+    GUI_DrawCircle(80, 160, i);
+//    HAL_Delay(20);
+  };
+  GUI_SetColor(0x00FFFF00);
+  for (int i = 0; i < 4; i += 1) {
+    GUI_SetColor(0x000FFFF0 << i*0x6);
+    GUI_FillCircle(200+(i*15),150+(i*15),30);
+//    HAL_Delay(20);
+  };
+  for (int i = 0; i < 4; i += 1) {
+    GUI_SetColor(0x000FFFF0 << i*0x6);
+    GUI_AA_FillCircle(400+(i*15),150+(i*15),30);
+//    HAL_Delay(20);
+  };
+  GUI_POINT aEnlargedPoints[GUI_COUNTOF(aPoints)];
+
+  GUI_SetDrawMode(GUI_DM_XOR);
+  GUI_FillPolygon(aPoints, GUI_COUNTOF(aPoints), 140, 110);
+  for (int i = 1; i < 10; i++) {
+    GUI_EnlargePolygon(aEnlargedPoints, aPoints, GUI_COUNTOF(aPoints), i * 5);
+    GUI_FillPolygon(aEnlargedPoints, GUI_COUNTOF(aPoints), 140, 110);
+  };
 }
 
 void J01_PixelIndex(void)
@@ -159,22 +260,3 @@ void J01_SetPixel(int x, int y, uint32_t color)
   GUI_SetColor(color);
   GUI_DrawPixel(60, 60);
 }
-
-// https://forum.segger.com/index.php/Thread/5022-SSD1963-GUI-GetPixelIndex/
-//U16 LCD_DEVFUNC_READPIXEL_CUSTOM(int LayerIndex)
-//{
-//  PortAPI.pfWrite16_A0(0x2e);
-//  return PortAPI.pfRead16_A1();
-//}
-//
-//void LCD_X_Config(void)
-//
-//{
-//.
-//.
-//.
-//.
-//LCD_SetDevFunc(0, LCD_DEVFUNC_READPIXEL, LCD_DEVFUNC_READPIXEL_CUSTOM);
-//
-//}
-

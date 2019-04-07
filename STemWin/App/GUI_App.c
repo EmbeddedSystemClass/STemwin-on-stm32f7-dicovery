@@ -57,16 +57,6 @@
 //
 #define RECOMMENDED_MEMORY (1024L * 100)
 
-int i=0;
-int xPos, yPos;
-
-const GUI_POINT aPoints[] = {
-  { 40, 20},
-  {  0, 20},
-  { 20,  0}
-};
-
-
 GUI_PID_STATE PollTouchScreen(void)
 {
   GUI_PID_STATE TS_State;               /* Structure that reports the touch state to STemWin */
@@ -116,159 +106,46 @@ void InitNew(void)
   GUI_AA_DisableHiRes();
 }
 
-void loop(void)
+void demos(void)
 {
   uint16_t delay = 2000;
 
-
-
-  //***** "Shapes" *********************************
-  InitNew();
-
-  //***** "Graph" ****************************************
-
-//  GUI_SelectLayer(0);
-  GUI_SetBkColor(GUI_BLACK);
-  GUI_Clear();
-  GUI_SetColor(GUI_WHITE);
-  I16 aY[460];
-  int i;
-  double step = 360.0/460.0;
-  double angle = 0.0;
-  for (i = 0; i < GUI_COUNTOF(aY); i++) {
-    aY[i] = sin(angle*2*M_PI/180) * -68 + 68;
-    angle += step;
-  }
-  GUI_SetColor(0xff306890);
-  GUI_SetPenSize(2);
-  for (uint16_t y = 4; y < 272; y += 44)
-  {
-    GUI_DrawHLine(y, 10, 470);
-  }
-  for (uint16_t x = 10; x < 480; x += 46)
-  {
-    GUI_DrawVLine(x, 4, 268);
-  }
-  GUI_SetPenSize(6);
-  GUI_SetColor(0xff00ff40);
-  GUI_DrawGraph(aY, GUI_COUNTOF(aY), 10, 69);
-  GUI_DrawGraph(aY, GUI_COUNTOF(aY), 10, 68);
-  GUI_DrawGraph(aY, GUI_COUNTOF(aY), 10, 67);
-  GUI_DrawGraph(aY, GUI_COUNTOF(aY), 10, 66);
-  HAL_Delay(delay*4);
-
-  //***** "Graph" ****************************************
-
-//  GUI_SetBkColor(GUI_DARKGREEN);
-//  GUI_Clear();
-//  GUI_SetColor(GUI_WHITE);
-//
-//  I16 aY[200];
-//  int i;
-//
-//
-//  int px[20];
-//  int py[20];
-//
-//  for (i = 0; i < GUI_COUNTOF(px); i++) {
-//    px[i] = i * 20;
-//    py[i] = rnd() % 150;
-//  }
-//  GUI_HMEM hSpline = GUI_SPLINE_Create(px, py, GUI_COUNTOF(px));
-//  UI_SPLINE_Draw(hSpline, 45, 45);
-//
-////  GUI_DrawGraph(aY, GUI_COUNTOF(aY), 50, 50);
-////  GUI_DrawHLine(205, 45, 250);
-////  GUI_DrawVLine(45, 45, 200);
-//  GUI_DispStringHCenterAt("Graph",250,210);
-//  HAL_Delay(5000);
-
-  //***** "Pie" ****************************************
-
-  InitNew();
-
-//  GUI_SelectLayer(1);
-  GUI_SetBkColor(GUI_GRAY);
-  GUI_Clear();
-  GUI_SetPenSize(1);
-
-  int a0, a1;
-  const unsigned aValues[]  = { 100, 135, 190, 240, 340, 360};
-  const GUI_COLOR aColors[] = { GUI_BLUE, GUI_GREEN,   GUI_RED,
-      GUI_CYAN, GUI_MAGENTA, GUI_YELLOW };
-  for (i = 0; i < GUI_COUNTOF(aValues); i++) {
-    a0 = (i == 0) ? 0 : aValues[i - 1];
-    a1 = aValues[i];
-    GUI_SetColor(aColors[i]);
-    GUI_DrawPie(150, 136, 120, a0, a1, 0);
-  }
-  GUI_SetColor(GUI_WHITE);
-  GUI_DispStringHCenterAt("Pie", 320, 150);
+  J01_TextVersionString1();
+  HAL_Delay(delay);
+  J01_TextVersionString2();
+  HAL_Delay(delay);
+  J01_TextModes();
+  HAL_Delay(delay);
+  J01_DispFloat();
+  HAL_Delay(delay);
+  J01_TextInBox();
+  HAL_Delay(delay);
+  J01_TextRotated();
+  HAL_Delay(delay);
+  J01_TextRotated();
   HAL_Delay(delay);
 
-  //***** "Miscellaneous" *********************************
-
-  InitNew();
-
-//  GUI_SelectLayer(0);
-  GUI_SetBkColor(GUI_GREEN);
-  GUI_Clear();
-  GUI_SetColor(GUI_RED);
-  for (i = 10; i <= 470; i += 10) {
-    GUI_DrawLine(i, 30, i, 60);
-//    HAL_Delay(20);
-  };
-  for (i = 10; i < 50; i += 3) {
-    GUI_DrawCircle(80, 160, i);
-//    HAL_Delay(20);
-  };
-  GUI_SetColor(0x00FFFF00);
-  for (i = 0; i < 4; i += 1) {
-    GUI_SetColor(0x000FFFF0 << i*0x6);
-    GUI_FillCircle(200+(i*15),150+(i*15),30);
-//    HAL_Delay(20);
-  };
-  GUI_POINT aEnlargedPoints[GUI_COUNTOF(aPoints)];
-
-  GUI_SetDrawMode(GUI_DM_XOR);
-  GUI_FillPolygon(aPoints, GUI_COUNTOF(aPoints), 140, 110);
-  for (i = 1; i < 10; i++) {
-    GUI_EnlargePolygon(aEnlargedPoints, aPoints, GUI_COUNTOF(aPoints), i * 5);
-    GUI_FillPolygon(aEnlargedPoints, GUI_COUNTOF(aPoints), 140, 110);
-  };
+  J01_DrawAlpha1();
+  HAL_Delay(delay);
+  J01_DrawAlpha2();
+  HAL_Delay(delay);
+  J01_DrawAlpha3();
+  HAL_Delay(delay);
+  J01_Shapes();
+  HAL_Delay(delay);
+  J01_Sine();
+  HAL_Delay(delay);
+  J01_BigDigits();
+  HAL_Delay(delay);
+  J01_PieChart();
+  HAL_Delay(delay);
+  J01_DrawModes();
+  HAL_Delay(delay);
+  J01_PixelIndex();
   HAL_Delay(delay);
 
-  GUI_SetBkColor(GUI_DARKBLUE);
-  GUI_Clear();
-  GUI_SetColor(GUI_YELLOW);
-  GUI_SetFont(&GUI_FontD80);
-  GUI_DispStringAt("1234.456", 10, 100);
-  HAL_Delay(delay);
 
-//  InitNew();
-//
-//  // Lines
-//  int16_t x[361];
-//  int16_t y[361];
-//  for (uint16_t i = 0; i <= 360; i++)
-//  {
-//    x[i] = sin(i*M_PI/-180) * 125;
-//    y[i] = cos(i*M_PI/-180) * 125;
-//  }
-//  GUI_SetBkColor(GUI_DARKBLUE);
-//  GUI_Clear();
-//  GUI_SetPenSize(2);
-//  GUI_SetColor(GUI_LIGHTGREEN);
-//  uint8_t layer = 0;
-//  for (uint16_t i = 0; i <= 360; i++)
-//  {
-////    GUI_SelectLayer(layer);
-////    layer ^= 1;
-//
-//    GUI_DrawLine(240, 136, 240+x[i], 136+y[i]);
-////    HAL_Delay(10);
-//  }
-//  HAL_Delay(delay);
+
 }
 
 //extern WM_HWIN CreateWindow(void);
@@ -566,11 +443,11 @@ void GRAPHICS_MainTask(void)
 //  _DemoBarGraph();
 //  HAL_Delay(2000);
 
-  InitNew();
-  Shapes();
-  HAL_Delay(delay*10);
+//  InitNew();
+//  Shapes();
+//  HAL_Delay(delay*10);
 
-  loop();
+  demos();
 
 //  GUI_RECT rClient;
 //  rClient.x0 = 10;
